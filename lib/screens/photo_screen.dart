@@ -233,9 +233,12 @@ class _PhotoScreenState extends State<PhotoScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text("$ph", style: GoogleFonts.inter(fontSize: 18)),
                       Text(
-                        phDescription,
+                        "Valor: $ph",
+                        style: GoogleFonts.inter(fontSize: 18),
+                      ),
+                      Text(
+                        "Estado: $phDescription",
                         style: GoogleFonts.inter(fontSize: 18),
                       ),
                     ],
