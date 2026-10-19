@@ -21,10 +21,12 @@ class _ImageScreenState extends State<ImageScreen> {
     image = newImage;
   }
 
+  String phDescription = "";
+
   @override
   Widget build(BuildContext context) {
     final colors = context.watch<ThemeController>().colorsOf(context);
-    
+
     return Scaffold(
       body: Column(
         children: [
@@ -37,6 +39,10 @@ class _ImageScreenState extends State<ImageScreen> {
                   phValue = extractPhFromColor(
                     srgbToHex(currentColor.r, currentColor.g, currentColor.b),
                   ).phValue;
+
+                  phDescription = extractPhFromColor(
+                    srgbToHex(currentColor.r, currentColor.g, currentColor.b),
+                  ).phDescription;
                 });
               },
               onImagePicked: (imageFilePath) {
@@ -47,7 +53,7 @@ class _ImageScreenState extends State<ImageScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: colors.background,
@@ -64,11 +70,29 @@ class _ImageScreenState extends State<ImageScreen> {
                 ),
               ],
             ),
-            child: Column(
-              children: [
-                Text("Valor do PH", style: GoogleFonts.inter(fontWeight: FontWeight(800), fontSize: 20),),
-                Text("$phValue", style: GoogleFonts.inter(fontSize: 15)),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Column(
+                children: [
+                  Text(
+                    "Informações sobre o PH",
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight(800),
+                      fontSize: 20,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text("$phValue", style: GoogleFonts.inter(fontSize: 15)),
+                      Text(
+                        "$phDescription",
+                        style: GoogleFonts.inter(fontSize: 15),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],

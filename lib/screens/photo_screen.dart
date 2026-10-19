@@ -19,6 +19,7 @@ class PhotoScreen extends StatefulWidget {
 class _PhotoScreenState extends State<PhotoScreen> {
   Color currentColor = Color.from(alpha: 1.0, red: 0.0, green: 0.0, blue: 0.0);
   int ph = 0;
+  String phDescription = "";
 
   CameraController? _controller;
   List<CameraDescription> _cameras = const [];
@@ -134,45 +135,6 @@ class _PhotoScreenState extends State<PhotoScreen> {
     final insets = MediaQuery.paddingOf(context);
     final controller = _controller;
 
-    if (_permissionDenied) {
-      return Scaffold(
-        backgroundColor: colors.background,
-        body: Center(
-          child: GestureDetector(
-            onTap: _setupCamera,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 24),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: colors.backgroundPrimary,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: colors.borderPrimary),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Garantir Permissão',
-                    style: GoogleFonts.inter(color: colors.text, fontSize: 20),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    'Sua permissão é importante para identificar que você está utilizando o aplicativo e a câmera.',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                      color: colors.text,
-                      fontWeight: FontWeight.w300,
-                      fontSize: 10,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       backgroundColor: colors.background,
       body: SizedBox(
@@ -212,6 +174,13 @@ class _PhotoScreenState extends State<PhotoScreen> {
                             currentColor.b,
                           ),
                         ).phValue;
+                        phDescription = extractPhFromColor(
+                          srgbToHex(
+                            currentColor.r,
+                            currentColor.g,
+                            currentColor.b,
+                          ),
+                        ).phDescription;
                       });
                     },
                     currentColor: currentColor,
@@ -242,26 +211,35 @@ class _PhotoScreenState extends State<PhotoScreen> {
             ),
             Container(
               alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.only(bottom: 30),
+              padding: EdgeInsets.only(bottom: 10),
               child: Column(
                 mainAxisAlignment: .end,
-                spacing: 20,
+                spacing: 15,
                 children: [
                   Container(
                     padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       color: colors.backgroundPrimary,
-                      borderRadius: BorderRadius.circular(10)
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      "Valor do PH",
+                      "Informações sobre o PH",
                       style: GoogleFonts.inter(
                         fontSize: 20,
                         fontWeight: FontWeight(700),
                       ),
                     ),
                   ),
-                  Text("$ph", style: GoogleFonts.inter(fontSize: 18)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text("$ph", style: GoogleFonts.inter(fontSize: 18)),
+                      Text(
+                        phDescription,
+                        style: GoogleFonts.inter(fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

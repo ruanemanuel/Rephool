@@ -24,20 +24,98 @@ class PhInfo {
 }
 
 const colorValues = <ColorValue>[
-  ColorValue(red: 174, green: 74, blue: 78, phValue: 1, phDescription: 'Extremamente ácido'),
-  ColorValue(red: 162, green: 73, blue: 88, phValue: 2, phDescription: 'Muito ácido'),
-  ColorValue(red: 172, green: 112, blue: 211, phValue: 3, phDescription: 'Bastante ácido'),
-  ColorValue(red: 115, green: 88, blue: 123, phValue: 4, phDescription: 'Bem ácido'),
+  ColorValue(
+    red: 174,
+    green: 74,
+    blue: 78,
+    phValue: 1,
+    phDescription: 'Muito ácido',
+  ),
+  ColorValue(
+    red: 162,
+    green: 73,
+    blue: 88,
+    phValue: 2,
+    phDescription: 'Muito ácido',
+  ),
+  ColorValue(
+    red: 172,
+    green: 112,
+    blue: 211,
+    phValue: 3,
+    phDescription: 'Ácido',
+  ),
+  ColorValue(
+    red: 115,
+    green: 88,
+    blue: 123,
+    phValue: 4,
+    phDescription: 'Ácido',
+  ),
   ColorValue(red: 162, green: 73, blue: 86, phValue: 5, phDescription: 'Ácido'),
-  ColorValue(red: 122, green: 88, blue: 131, phValue: 6, phDescription: 'Pouco neutro'),
-  ColorValue(red: 137, green: 113, blue: 145, phValue: 7, phDescription: 'Neutro'),
-  ColorValue(red: 117, green: 87, blue: 137, phValue: 8, phDescription: 'Pouco básico'),
-  ColorValue(red: 120, green: 94, blue: 128, phValue: 9, phDescription: 'Básico'),
-  ColorValue(red: 116, green: 97, blue: 119, phValue: 10, phDescription: 'Bastante básico'),
-  ColorValue(red: 120, green: 97, blue: 133, phValue: 11, phDescription: 'Muito básico'),
-  ColorValue(red: 60, green: 80, blue: 108, phValue: 12, phDescription: 'Alcalinidade intensa'),
-  ColorValue(red: 6, green: 109, blue: 27, phValue: 13, phDescription: 'Alcalinidade extrema'),
-  ColorValue(red: 205, green: 155, blue: 4, phValue: 14, phDescription: 'Extremamente básico'),
+  ColorValue(
+    red: 122,
+    green: 88,
+    blue: 131,
+    phValue: 6,
+    phDescription: 'Fresco',
+  ),
+  ColorValue(
+    red: 137,
+    green: 113,
+    blue: 145,
+    phValue: 7,
+    phDescription: 'Fresco',
+  ),
+  ColorValue(
+    red: 117,
+    green: 87,
+    blue: 137,
+    phValue: 8,
+    phDescription: 'Pouco fresco',
+  ),
+  ColorValue(
+    red: 120,
+    green: 94,
+    blue: 128,
+    phValue: 9,
+    phDescription: 'Estragado',
+  ),
+  ColorValue(
+    red: 116,
+    green: 97,
+    blue: 119,
+    phValue: 10,
+    phDescription: 'Estragado',
+  ),
+  ColorValue(
+    red: 120,
+    green: 97,
+    blue: 133,
+    phValue: 11,
+    phDescription: 'Muito estragado',
+  ),
+  ColorValue(
+    red: 60,
+    green: 80,
+    blue: 108,
+    phValue: 12,
+    phDescription: 'Muito estragado',
+  ),
+  ColorValue(
+    red: 6,
+    green: 109,
+    blue: 27,
+    phValue: 13,
+    phDescription: 'Muito estragado',
+  ),
+  ColorValue(
+    red: 205,
+    green: 155,
+    blue: 4,
+    phValue: 14,
+    phDescription: 'Muito estragado',
+  ),
 ];
 
 List<double> hexToHsv(String hex) {
@@ -106,10 +184,7 @@ PhInfo extractPhFromColor(String hex) {
   }
 
   final match = colorValues.where((c) => c.phValue == phValue);
-  return PhInfo(
-    phValue: phValue,
-    phDescription: match.isEmpty ? '' : match.first.phDescription,
-  );
+  return PhInfo(phValue: phValue, phDescription: match.first.phDescription);
 }
 
 String srgbToHex(double r, double g, double b, {bool leadingHashSign = true}) {
