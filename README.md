@@ -5,6 +5,9 @@ Obs: O código está disponível na branch **point**.
 ## Overview
 Bem-vindo ao aplicativo Rephool, essa aplicação foi desenvolvida com o objetivo de identificar o PH de amostras utilizando o repolho roxo a partir da cor desse substrato, cuja cor será identificada por um calibrador de cores integrado com o próprio aplicativo.
 
+Obs: A escala de PH fornecida no aplicativo não é uma escala "perfeita", é uma escala aproximada do PH a partir da coloração, então o identificador pode cometer erros. Além disso, é muito importante que você utilize essa aplicação em amostras com o identificador do PH repolho roxo, pois não funciona com qualquer objeto, só com substâncias com o identificador do PH repolho roxo.
+
+
 ## Desenvolvimento
 Esse aplicativo foi desenvolvido pela linguagem de programação Dart e o framework Flutter - desenvolvido pela Google - para criação de aplicativos para qualquer sistema operacional.
 
