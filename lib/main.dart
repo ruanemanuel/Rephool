@@ -54,7 +54,7 @@ class _RephoolAppState extends State<RephoolApp> {
             ),
             darkTheme: ThemeData(
               brightness: Brightness.dark,
-              scaffoldBackgroundColor: Color(0xFF27132F),
+              scaffoldBackgroundColor: Color(0xFF2E2329),
               useMaterial3: true,
             ),
             initialRoute: '/',
